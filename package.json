@@ -10,7 +10,11 @@
   ],
   "main": "dist/clampy.umd.js",
   "module": "dist/clampy.es5.js",
-  "typings": "dist/types/clampy.d.ts",
+  "typings": [
+    "dist/types/clampy.d.ts",
+    "dist/types/clampOptions.d.ts",
+    "dist/types/clampResponse.d.ts"
+  ],
   "files": [
     "dist"
   ],
