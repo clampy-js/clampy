@@ -1,6 +1,6 @@
 {
   "name": "@clampy-js/clampy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Clamps an HTML element by adding ellipsis to it if the content inside is too long.",
   "keywords": [
     "clamp",
