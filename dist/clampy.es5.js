@@ -1,10 +1,24 @@
+class ClampOptions {
+    constructor(clamp, truncationChar, truncationHTML, splitOnChars) {
+        this.clamp = clamp || 'auto',
+            this.truncationChar = truncationChar || '…';
+        this.truncationHTML = truncationHTML;
+        this.splitOnChars = splitOnChars || ['.', '-', '–', '—', ' '];
+    }
+}
+class ClampResponse {
+    constructor(original, clamped) {
+        this.original = original;
+        this.clamped = clamped;
+    }
+}
 /**
  * Clamps (ie. cuts off) an HTML element's content by adding ellipsis to it if the content inside is too long.
  *
  * @export
  * @param {HTMLElement} element The HTMLElement that should be clamped.
- * @param {IClampOptions} [options] The Clamp options
- * @returns {IClampResponse} The Clamp response
+ * @param {ClampOptions} [options] The Clamp options
+ * @returns {ClampResponse} The Clamp response
  */
 function clamp(element, options) {
     let win = window;
@@ -189,8 +203,8 @@ function clamp(element, options) {
     if (height < getElemHeight(element)) {
         clampedText = truncate(getLastChild(element), height);
     }
-    return { 'original': originalText, 'clamped': clampedText };
+    return new ClampResponse(originalText, clampedText);
 }
 
-export { clamp };
+export { ClampOptions, ClampResponse, clamp };
 //# sourceMappingURL=clampy.es5.js.map
