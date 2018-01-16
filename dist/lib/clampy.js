@@ -1,18 +1,16 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.clampy = {})));
-}(this, (function (exports) { 'use strict';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var ClampOptions = /** @class */ (function () {
     function ClampOptions(clamp, truncationChar, truncationHTML, splitOnChars) {
-        
-        this.clamp = clamp || "auto", this.truncationChar = truncationChar || "…";
+        ;
+        (this.clamp = clamp || "auto"),
+            (this.truncationChar = truncationChar || "…");
         this.truncationHTML = truncationHTML;
         this.splitOnChars = splitOnChars || [".", "-", "–", "—", " "];
     }
     return ClampOptions;
 }());
+exports.ClampOptions = ClampOptions;
 var ClampResponse = /** @class */ (function () {
     function ClampResponse(original, clamped) {
         this.original = original;
@@ -20,6 +18,7 @@ var ClampResponse = /** @class */ (function () {
     }
     return ClampResponse;
 }());
+exports.ClampResponse = ClampResponse;
 /**
  * Clamps (ie. cuts off) an HTML element's content by adding ellipsis to it if the content inside is too long.
  *
@@ -228,12 +227,5 @@ function clamp(element, options) {
     }
     return new ClampResponse(originalText, clampedText);
 }
-
-exports.ClampOptions = ClampOptions;
-exports.ClampResponse = ClampResponse;
 exports.clamp = clamp;
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-})));
-//# sourceMappingURL=clampy.umd.js.map
+//# sourceMappingURL=clampy.js.map

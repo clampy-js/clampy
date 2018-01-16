@@ -1,6 +1,6 @@
 {
   "name": "@clampy-js/clampy",
-  "version": "1.0.6",
+  "version": "0.0.0-development",
   "description": "Clamps an HTML element by adding ellipsis to it if the content inside is too long.",
   "keywords": [
     "clamp",
@@ -11,9 +11,7 @@
   "main": "dist/clampy.umd.js",
   "module": "dist/clampy.es5.js",
   "typings": [
-    "dist/types/clampy.d.ts",
-    "dist/types/clampOptions.d.ts",
-    "dist/types/clampResponse.d.ts"
+    "dist/types/clampy.d.ts"
   ],
   "files": [
     "dist"
@@ -30,7 +28,7 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc && rollup -c && rimraf compiled && typedoc --out dist/docs --target es6 --theme minimal src",
+    "build": "tsc --module commonjs --outDir dist/lib && rollup -c rollup.config.ts && typedoc --out dist/docs --target es6 --theme minimal --mode file src",
     "start": "tsc-watch --onSuccess \"rollup -c\"",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -38,7 +36,7 @@
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
     "prepush": "npm run test:prod && npm run build",
@@ -60,6 +58,11 @@
     }
   },
   "jest": {
+    "globals": {
+      "__TS_CONFIG__": {
+        "module": "commonjs"
+      }
+    },
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
@@ -83,33 +86,34 @@
     }
   },
   "devDependencies": {
-    "@types/jest": "^20.0.0",
-    "@types/node": "^8.0.0",
+    "@types/jest": "^22.0.0",
+    "@types/node": "^9.3.0",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
-    "coveralls": "^2.13.1",
-    "cross-env": "^5.0.1",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.3",
     "cz-conventional-changelog": "^2.0.0",
-    "jest": "^20.0.4",
-    "lint-staged": "^4.0.0",
+    "husky": "^0.14.0",
+    "jest": "^22.0.2",
+    "lint-staged": "^6.0.0",
     "lodash.camelcase": "^4.3.0",
-    "prettier": "^1.4.4",
+    "prettier": "^1.10.2",
     "prompt": "^1.0.0",
-    "replace-in-file": "^2.5.0",
+    "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
-    "rollup": "^0.49.0",
+    "rollup": "^0.54.0",
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-node-resolve": "^3.0.2",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "semantic-release": "^6.3.6",
-    "ts-jest": "^20.0.6",
-    "ts-node": "^3.0.6",
-    "tsc-watch": "^1.0.5",
-    "tslint": "^5.4.3",
+    "rollup-plugin-typescript2": "^0.10.0",
+    "semantic-release": "^12.2.2",
+    "ts-jest": "^22.0.0",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.1.0",
-    "tslint-config-standard": "^6.0.0",
-    "typedoc": "^0.7.1",
-    "typescript": "^2.6.1",
+    "tslint-config-standard": "^7.0.0",
+    "typedoc": "^0.9.0",
+    "typescript": "^2.6.2",
     "validate-commit-msg": "^2.12.2"
   }
 }

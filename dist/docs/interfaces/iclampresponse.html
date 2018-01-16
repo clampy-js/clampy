@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IClampOptions | @clampy-js/clampy</title>
+	<title>IClampResponse | @clampy-js/clampy</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -909,34 +909,28 @@ img { max-width: 100%; }
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/_clampy_.clampoptions.html" class="tsd-kind-icon">Clamp<wbr>Options</a>
+		<li class=" tsd-kind-class">
+			<a href="../classes/clampoptions.html" class="tsd-kind-icon">Clamp<wbr>Options</a>
 		</li>
-		<li class=" tsd-kind-class tsd-parent-kind-external-module">
-			<a href="../classes/_clampy_.clampresponse.html" class="tsd-kind-icon">Clamp<wbr>Response</a>
+		<li class=" tsd-kind-class">
+			<a href="../classes/clampresponse.html" class="tsd-kind-icon">Clamp<wbr>Response</a>
 		</li>
-		<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-			<a href="_clampy_.iclampoptions.html" class="tsd-kind-icon">IClamp<wbr>Options</a>
+		<li class=" tsd-kind-interface">
+			<a href="iclampoptions.html" class="tsd-kind-icon">IClamp<wbr>Options</a>
+		</li>
+		<li class="current tsd-kind-interface">
+			<a href="iclampresponse.html" class="tsd-kind-icon">IClamp<wbr>Response</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="_clampy_.iclampoptions.html#clamp" class="tsd-kind-icon">clamp</a>
+					<a href="iclampresponse.html#clamped" class="tsd-kind-icon">clamped</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="_clampy_.iclampoptions.html#splitonchars" class="tsd-kind-icon">split<wbr>OnChars</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="_clampy_.iclampoptions.html#truncationchar" class="tsd-kind-icon">truncation<wbr>Char</a>
-				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="_clampy_.iclampoptions.html#truncationhtml" class="tsd-kind-icon">truncationHTML</a>
+					<a href="iclampresponse.html#original" class="tsd-kind-icon">original</a>
 				</li>
 			</ul>
 		</li>
-		<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-			<a href="_clampy_.iclampresponse.html" class="tsd-kind-icon">IClamp<wbr>Response</a>
-		</li>
-		<li class=" tsd-kind-function tsd-parent-kind-external-module">
-			<a href="../modules/_clampy_.html#clamp" class="tsd-kind-icon">clamp</a>
+		<li class=" tsd-kind-function">
+			<a href="../globals.html#clamp" class="tsd-kind-icon">clamp</a>
 		</li>
 	</ul>
 </nav>
@@ -946,14 +940,14 @@ img { max-width: 100%; }
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">IClampOptions</span>
+					<span class="target">IClampResponse</span>
 				</li>
 			</ul>
 		</section>
 		<section class="tsd-panel">
 			<h3>Implemented by</h3>
 			<ul class="tsd-hierarchy">
-				<li><a href="../classes/_clampy_.clampoptions.html" class="tsd-signature-type">ClampOptions</a></li>
+				<li><a href="../classes/clampresponse.html" class="tsd-signature-type">ClampResponse</a></li>
 			</ul>
 		</section>
 		<section class="tsd-panel-group tsd-index-group">
@@ -963,10 +957,8 @@ img { max-width: 100%; }
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_clampy_.iclampoptions.html#clamp" class="tsd-kind-icon">clamp</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_clampy_.iclampoptions.html#splitonchars" class="tsd-kind-icon">split<wbr>OnChars</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_clampy_.iclampoptions.html#truncationchar" class="tsd-kind-icon">truncation<wbr>Char</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_clampy_.iclampoptions.html#truncationhtml" class="tsd-kind-icon">truncationHTML</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iclampresponse.html#clamped" class="tsd-kind-icon">clamped</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iclampresponse.html#original" class="tsd-kind-icon">original</a></li>
 						</ul>
 					</section>
 				</div>
@@ -975,42 +967,22 @@ img { max-width: 100%; }
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="clamp" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> clamp</h3>
-				<div class="tsd-signature tsd-kind-icon">clamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"auto"</span></div>
+				<a name="clamped" class="tsd-anchor"></a>
+				<h3>clamped</h3>
+				<div class="tsd-signature tsd-kind-icon">clamped<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/clampy-js/clampy/blob/386b6d8/src/clampy.ts#L5">clampy.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/clampy-js/clampy/blob/d4b7029/src/clampy.ts#L10">clampy.ts:10</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="splitonchars" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> split<wbr>OnChars</h3>
-				<div class="tsd-signature tsd-kind-icon">split<wbr>OnChars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+				<a name="original" class="tsd-anchor"></a>
+				<h3>original</h3>
+				<div class="tsd-signature tsd-kind-icon">original<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/clampy-js/clampy/blob/386b6d8/src/clampy.ts#L8">clampy.ts:8</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="truncationchar" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> truncation<wbr>Char</h3>
-				<div class="tsd-signature tsd-kind-icon">truncation<wbr>Char<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/clampy-js/clampy/blob/386b6d8/src/clampy.ts#L6">clampy.ts:6</a></li>
-					</ul>
-				</aside>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="truncationhtml" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> truncationHTML</h3>
-				<div class="tsd-signature tsd-kind-icon">truncationHTML<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/clampy-js/clampy/blob/386b6d8/src/clampy.ts#L7">clampy.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/clampy-js/clampy/blob/d4b7029/src/clampy.ts#L9">clampy.ts:9</a></li>
 					</ul>
 				</aside>
 			</section>
