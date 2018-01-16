@@ -40,7 +40,8 @@
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
     "prepush": "npm run test:prod && npm run build",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -78,10 +79,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
+        "branches": 15,
+        "functions": 60,
+        "lines": 35,
+        "statements": 35
       }
     }
   },
@@ -114,6 +115,7 @@
     "tslint-config-standard": "^7.0.0",
     "typedoc": "^0.9.0",
     "typescript": "^2.6.2",
-    "validate-commit-msg": "^2.12.2"
+    "validate-commit-msg": "^2.12.2",
+    "travis-deploy-once": "^4.3.1"
   }
 }
