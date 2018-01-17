@@ -15,3 +15,6 @@ Documentation is available [here](./dist/docs/).
 
 ## Examples
 A demo is available [here](./demo/).
+
+## CI Build Status
+[![Build Status](https://travis-ci.org/clampy-js/clampy.svg?branch=master)](https://travis-ci.org/clampy-js/clampy)
