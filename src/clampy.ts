@@ -22,8 +22,8 @@ export class ClampOptions implements IClampOptions {
     truncationHTML?: string,
     splitOnChars?: string[]
   ) {
-    ;(this.clamp = clamp || "auto"),
-      (this.truncationChar = truncationChar || "…")
+    this.clamp = clamp || "auto"
+    this.truncationChar = truncationChar || "…"
     this.truncationHTML = truncationHTML
     this.splitOnChars = splitOnChars || [".", "-", "–", "—", " "]
   }
@@ -47,10 +47,7 @@ export class ClampResponse implements IClampResponse {
  * @param {ClampOptions} [options] The Clamp options
  * @returns {ClampResponse} The Clamp response
  */
-export function clamp(
-  element: HTMLElement,
-  options?: ClampOptions
-): ClampResponse {
+export function clamp(element: HTMLElement, options?: ClampOptions): ClampResponse {
   const win = window
 
   if (!options) {
@@ -76,8 +73,7 @@ export function clamp(
   const originalText = element.innerHTML
   let clampValue = opt.clamp
   const isCSSValue =
-    clampValue.indexOf &&
-    (clampValue.indexOf("px") > -1 || clampValue.indexOf("em") > -1)
+    clampValue.indexOf && (clampValue.indexOf("px") > -1 || clampValue.indexOf("em") > -1)
   let truncationHTMLContainer: any
 
   if (opt.truncationHTML) {
@@ -124,8 +120,7 @@ export function clamp(
     if (lh === "normal") {
       // Normal line heights vary from browser to browser. The spec recommends
       // a value between 1.0 and 1.2 of the font size. Using 1.1 to split the diff.
-      lh =
-        parseFloat(parseFloat(computeStyle(elem, "font-size")).toFixed(0)) * 1.1
+      lh = parseFloat(parseFloat(computeStyle(elem, "font-size")).toFixed(0)) * 1.1
     }
     return parseFloat(parseFloat(lh).toFixed(0))
   }
@@ -135,32 +130,66 @@ export function clamp(
    * Note: inline elements return 0 for scrollHeight and clientHeight
    */
   function getElemHeight(elem: HTMLElement): number {
-    return Math.max(elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+    // The '- 1' is a hack to deal with the element height when the browser(especially IE) zoom level is not 100%.
+    // It also doesn't impact clamping when the browser zoom level is 100%.
+    return Math.max(elem.scrollHeight, elem.clientHeight) - 1
   }
 
   /**
    * Gets an element's last child. That may be another node or a node's contents.
    */
-  function getLastChild(elem: HTMLElement): any {
+  function getLastChild(elem: any): any {
     if (!elem.lastChild) {
       return
     }
     // Current element has children, need to go deeper and get last child as a text node
-    if (elem.lastChild.childNodes && elem.lastChild.childNodes.length > 0) {
+    if (elem.lastChild.children && elem.lastChild.children.length > 0) {
       return getLastChild(Array.prototype.slice.call(elem.children).pop())
-    } else if (
+    }
+    // This is the absolute last child, a text node, but something's wrong with it. Remove it and keep trying
+    else if (
       !elem.lastChild ||
       !elem.lastChild.nodeValue ||
       elem.lastChild.nodeValue === "" ||
       elem.lastChild.nodeValue === opt.truncationChar
     ) {
-      // This is the absolute last child, a text node, but something's wrong with it. Remove it and keep trying
-      if (elem.lastChild.parentNode) {
-        elem.lastChild.parentNode.removeChild(elem.lastChild)
-        return getLastChild(element)
+      if (!elem.lastChild.nodeValue) {
+        // Check for void/empty element (such as <br> tag) or if it's the ellipsis and remove it.
+        if (
+          (elem.lastChild.firstChild === null ||
+            elem.lastChild.firstChild.nodeValue === opt.truncationChar) &&
+          elem.lastChild.parentNode
+        ) {
+          elem.lastChild.parentNode.removeChild(elem.lastChild)
+
+          // Check if the element has no more children and remove it if it's the case.
+          // This can happen for instance with lists (i.e. <ul> and <ol>) with no items.
+          if ((!elem.children || elem.children.length === 0) && elem.parentNode) {
+            elem.parentNode.removeChild(elem)
+            return getLastChild(element)
+          }
+        }
+
+        // Check if it's a text node
+        if (elem.lastChild.nodeType === 3) {
+          return elem.lastChild
+        } else {
+          return getLastChild(elem.lastChild)
+        }
       }
-    } else {
-      // This is the last child we want, return it
+      if (
+        elem.lastChild &&
+        elem.lastChild.parentNode &&
+        elem.lastChild.nodeValue === opt.truncationChar
+      ) {
+        elem.lastChild.parentNode.removeChild(elem.lastChild)
+      } else {
+        return elem
+      }
+      return getLastChild(element)
+    }
+    // This is the last child we want, return it
+    else {
       return elem.lastChild
     }
   }
@@ -222,10 +251,7 @@ export function clamp(
     if (truncationHTMLContainer) {
       target.nodeValue = target.nodeValue.replace(opt.truncationChar, "")
       element.innerHTML =
-        target.nodeValue +
-        " " +
-        truncationHTMLContainer.innerHTML +
-        opt.truncationChar
+        target.nodeValue + " " + truncationHTMLContainer.innerHTML + opt.truncationChar
     }
 
     // Search produced valid chunks
