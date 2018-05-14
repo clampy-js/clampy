@@ -130,9 +130,9 @@ export function clamp(element: HTMLElement, options?: ClampOptions): ClampRespon
    * Note: inline elements return 0 for scrollHeight and clientHeight
    */
   function getElemHeight(elem: HTMLElement): number {
-    // The '- 1' is a hack to deal with the element height when the browser(especially IE) zoom level is not 100%.
+    // The '- 4' is a hack to deal with the element height when the browser(especially IE) zoom level is not 100%.
     // It also doesn't impact clamping when the browser zoom level is 100%.
-    return Math.max(elem.scrollHeight, elem.clientHeight) - 1
+    return Math.max(elem.scrollHeight, elem.clientHeight) - 4
   }
 
   /**
