@@ -221,6 +221,14 @@ export function clamp(element: HTMLElement, options?: ClampOptions): ClampRespon
     if (!target || !maxHeight || !target.nodeValue) {
       return
     }
+    
+    if (!target.nodeValue.trim().endsWith(opt.truncationChar)) {
+      applyEllipsis(target, target.nodeValue);
+    }
+    
+    if (getElemHeight(element) <= maxHeight) {
+      return element.innerHTML;
+    }
 
     const nodeValue = target.nodeValue.replace(opt.truncationChar, "")
 
