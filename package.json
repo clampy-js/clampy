@@ -84,7 +84,8 @@
         "lines": 0,
         "statements": 0
       }
-    }
+    },
+    "testURL": "http://localhost/"
   },
   "devDependencies": {
     "@types/jest": "~22.0.0",
